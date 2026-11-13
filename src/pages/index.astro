@@ -1,15 +1,52 @@
 ---
----
+import Layout from '../layouts/Layout.astro';
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+const projects = [
+  { title: 'Project one', meta: 'Category · 2026', text: 'A short description of the project, your role and the result.', href: '#' },
+  { title: 'Project two', meta: 'Category · 2025', text: 'A short description of the project, your role and the result.', href: '#' },
+  { title: 'Project three', meta: 'Category · 2024', text: 'A short description of the project, your role and the result.', href: '#' },
+];
+---
+<Layout title="Your Name – Portfolio">
+  <section id="intro">
+    <div class="wrap">
+      <h1>Hi, I’m Your Name.</h1>
+      <p class="lede">
+        One or two sentences about what you do and who you do it for.
+        Replace this placeholder text with your own.
+      </p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <h2>Selected work</h2>
+      <div class="grid">
+        {projects.map((p) => (
+          <article class="card">
+            <div class="thumb" role="img" aria-label="Placeholder image"></div>
+            <div class="body">
+              <h3><a href={p.href}>{p.title}</a></h3>
+              <p class="meta">{p.meta}</p>
+              <p>{p.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <p class="lede">A short paragraph about your background, skills and approach.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="lede"><a href="mailto:hello@example.com">hello@example.com</a></p>
+    </div>
+  </section>
+</Layout>
